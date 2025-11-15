@@ -1,10 +1,20 @@
 import express, { type Request, type Response } from "express";
 
+class App{
+  private app: express.Application;
 
-const app = express();
+  constructor(){
+    this.app = express();
+    this.routes();
+  }
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({ message: "Hello World" });
-});
+  private routes():void{
+    this.app.get("/", (req: Request, res: Response) => {
+      res.json({ message: "Hello World" });
+    });
+  }
 
-export default app;
+  getApp = () => this.app;
+}
+
+export default new App().getApp();
