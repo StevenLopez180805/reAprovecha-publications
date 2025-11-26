@@ -17,6 +17,9 @@ export class User{
   @Column({type: "varchar", length: 50})
   second_last_name!:string;
 
+  @Column({type: "varchar", length: 254})
+  email!:string;
+
   @Column({type: "varchar", length: 128})
   password!:string;
 
