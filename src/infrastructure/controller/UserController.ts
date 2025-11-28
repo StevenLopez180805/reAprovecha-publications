@@ -8,6 +8,16 @@ import { loadEmail } from "../util/email-validation";
 export class UserController{
   constructor(private app: UserApplication){}
 
+  async login(req: Request, res:Response):Promise<Response>{
+    try {
+      const {email, password} = req.body;
+      const token = await this.app.login(email, password);
+      return res.status(200).json({msg: "Login exitoso", token});
+    } catch (error) {
+      return res.status(401).json({error: "Credenciales invalidás"});
+    }
+  }
+
   async createUser(req: Request, res:Response):Promise<Response>{
     try {
       const {first_name, second_name, last_name, second_last_name, email, password} = loadUserData(req.body)
