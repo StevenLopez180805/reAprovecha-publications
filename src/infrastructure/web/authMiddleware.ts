@@ -11,7 +11,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
 
   try {
     const payload = AuthApplication.verifyToken(token);
-    (req as any).user = payload;
+    req.user = payload;
     next();
   } catch (error) {
     res.status(403).json({error: "Token inválido o expirado"});

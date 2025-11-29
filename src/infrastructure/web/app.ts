@@ -1,5 +1,5 @@
 import express from "express";
-import UserRoutes from "../routes/UserRoutes";
+import PublicationRoutes from "../routes/PublicationRoutes";
 
 class App{
   private app: express.Application;
@@ -15,7 +15,7 @@ class App{
   }
 
   private routes():void{
-    this.app.use("/api", UserRoutes);
+    this.app.use("/api", PublicationRoutes);
   }
 
   getApp(){
